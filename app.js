@@ -9,7 +9,7 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoiY3dpbGxlMjAxMiIsImEiOiJjajJxdWJyeXEwMDE5MzNydXF
 
 var socket = require('engine.io-client')('ws://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:3001');
 
-const DATA_URL = 'http://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:8080/data/sensorData.json';
+const DATA_URL = 'http://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:8080/data.json';
 
 
 requestJson(DATA_URL, (error, responsedata) => {

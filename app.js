@@ -13,7 +13,7 @@ const DATA_URL = 'http://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:8080
 
 requestJson(DATA_URL, (error, response) => {
     if (!error) {
-        data = response;
+        var data = response;
         console.log(data);
 
         //var newData = String(data);

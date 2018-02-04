@@ -9,10 +9,14 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoiY3dpbGxlMjAxMiIsImEiOiJjajJxdWJyeXEwMDE5MzNydXF
 
 var socket = require('engine.io-client')('ws://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:3001');
 
-socket.on('open', function() {
-    socket.on('message', function(data) {
+const DATA_URL = 'http://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:8080/data/sensorData.json';
+
+
+
+requestJson(DATA_URL, (error, responsedata) => {
+    if (!error) {
         //console.log(data);
-        var newData = String(data);
+        var newData = String(responsedata);
         if (newData.length > 500) {
             //first message
             newData = JSON.parse(newData);
@@ -2351,6 +2355,5 @@ socket.on('open', function() {
 
         }
 
-    });
-    socket.on('close', function() {});
+    }); socket.on('close', function() {});
 });

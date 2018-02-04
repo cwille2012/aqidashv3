@@ -2276,7 +2276,7 @@ requestJson(DATA_URL, (error, responsedata) => {
 
                             }
 
-                            console.log(data);
+                            //console.log(data);
                             this.setState({ data: response });
 
                         }

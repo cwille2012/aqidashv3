@@ -55,7 +55,7 @@ requestJson(DATA_URL, (error, responsedata) => {
                                 positionArray.push(lng);
                                 positionArray.push(lat);
 
-                                for (var j = 0; j < 60; j++) {
+                                for (var j = 0; j < 600; j++) {
                                     response.push(positionArray);
                                 }
 

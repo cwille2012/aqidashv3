@@ -9,6 +9,8 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoiY3dpbGxlMjAxMiIsImEiOiJjajJxdWJyeXEwMDE5MzNydXF
 
 var socket = require('engine.io-client')('ws://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:3001');
 
+var data;
+
 socket.on('open', function() {
     socket.on('message', function(data) {
         //console.log(data);
@@ -63,9 +65,9 @@ socket.on('open', function() {
 
 
                             }
-                            //var data = response;
+                            data = response;
 
-                            this.setState({ data: response });
+                            //this.setState({ data: response });
                             console.log(data);
                         }
                     });

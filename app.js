@@ -12,10 +12,11 @@ var socket = require('engine.io-client')('ws://ec2-18-220-229-176.us-east-2.comp
 const DATA_URL = 'http://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:8080/data.json';
 
 socket.on('open', function() {
-    socket.on('message', function(data) {
+    socket.on('message', function(data2) {
         requestJson(DATA_URL, (error, response) => {
             if (!error) {
                 data = response;
+                console.log(data);
             }
 
             //console.log(data);

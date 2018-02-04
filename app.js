@@ -2282,7 +2282,7 @@ requestJson(DATA_URL, (error, response) => {
 
                         }
 
-                        console.log(data);
+                        console.log(response);
                         this.setState({ data: response });
 
                     }

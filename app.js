@@ -61,7 +61,7 @@ requestJson(DATA_URL, (error, responsedata) => {
 
                             }
                             var data = response;
-                            //this.setState({ data: response });
+                            this.setState({ data: response });
                             console.log(data);
                         }
                     });

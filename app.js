@@ -16,10 +16,10 @@ requestJson(DATA_URL, (error, response) => {
         var data = response;
         console.log(data);
 
-        //var newData = String(data);
+        var newData = String(data);
 
         //first message
-        newData = JSON.parse(data);
+        newData = JSON.parse(newData);
         //console.log(newData);
 
         //add data to table:

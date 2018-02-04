@@ -12,7 +12,6 @@ var socket = require('engine.io-client')('ws://ec2-18-220-229-176.us-east-2.comp
 const DATA_URL = 'http://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:8080/data/sensorData.json';
 
 
-
 requestJson(DATA_URL, (error, responsedata) => {
     if (!error) {
         //console.log(data);
@@ -2355,5 +2354,5 @@ requestJson(DATA_URL, (error, responsedata) => {
 
         }
 
-    }); socket.on('close', function() {});
+    }
 });

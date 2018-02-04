@@ -16,11 +16,13 @@ requestJson(DATA_URL, (error, response) => {
         var data = response;
         console.log(data);
 
-        var newData = String(data);
+        //var newData = String(data);
 
         //first message
-        newData = JSON.parse(newData);
+        //newData = JSON.parse(newData);
         //console.log(newData);
+
+        var newData = data;
 
         //add data to table:
         var indexDataTableExists = !!document.getElementById('indexDataTable');

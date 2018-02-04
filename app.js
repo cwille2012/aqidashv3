@@ -35,6 +35,8 @@ socket.on('open', function() {
                         data: null
                     };
 
+                    newData = JSON.parse(newData);
+
                     requestCsv(DATA_URL, (error, responsedata) => {
                         if (!error) {
 
@@ -44,7 +46,7 @@ socket.on('open', function() {
                                 console.log("newData:");
                                 console.log(newData);
 
-                                newData = JSON.parse(newData);
+
 
                                 var lng = newData[i]['pos']['lon'];
                                 var lat = newData[i]['pos']['lat'];

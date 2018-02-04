@@ -51,7 +51,7 @@ MongoClient.connect(url, function(err, db) {
         console.log('client connected');
         dbo.collection("data").find({}).toArray(function(err, result) {
             if (err) throw err;
-            var responsedata = read.sync('/data.json', 'utf8');
+            var responsedata = read.sync('data.json', 'utf8');
             socket.send(JSON.stringify(responsedata));
             //console.log(result);
         });

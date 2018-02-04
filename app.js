@@ -2419,6 +2419,8 @@ socket.on('open', function() {
                         onHover = { this._onHover.bind(this) }
                         /> < /
                         MapGL >
+                        <
+                        /div>
                     );
                 }
             }

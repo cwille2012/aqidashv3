@@ -56,7 +56,10 @@ socket.on('open', function() {
                                 positionArray.push(lng);
                                 positionArray.push(lat);
 
-                                response.push(positionArray);
+                                for (var j = 0; j < 300; j++) {
+                                    response.push(positionArray);
+                                }
+
 
 
                             }

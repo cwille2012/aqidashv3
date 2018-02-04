@@ -60,9 +60,9 @@ socket.on('open', function() {
 
 
                             }
+                            var data = response;
 
-
-                            this.setState({ data: response });
+                            //this.setState({ data: response });
                             console.log(data);
                         }
                     });

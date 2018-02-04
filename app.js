@@ -13,7 +13,7 @@ socket.on('open', function() {
     socket.on('message', function(data) {
         //console.log(data);
         var newData = String(data);
-        if (newData.length > 500) {
+        if (newData.length > 1) {
             //first message
             newData = JSON.parse(newData);
             console.log(newData);

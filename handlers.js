@@ -8,6 +8,10 @@ var url = "mongodb://localhost:27017";
 
 var NRP = require('node-redis-pubsub');
 
+import { json as requestJson } from 'd3-request';
+
+const DATA_URL = 'http://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:8080/data.json';
+
 var config = {
     port: 6379,
     host: '35.225.154.211',
@@ -47,7 +51,12 @@ MongoClient.connect(url, function(err, db) {
         console.log('client connected');
         dbo.collection("data").find({}).toArray(function(err, result) {
             if (err) throw err;
-            socket.send(JSON.stringify(result));
+            requestJson(DATA_URL, (error, responsedata) => {
+                if (!error) {
+                    socket.send(JSON.stringify(responsedata));
+                }
+            });
+
             //console.log(result);
         });
         connection = socket;

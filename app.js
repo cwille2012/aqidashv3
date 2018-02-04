@@ -35,30 +35,33 @@ socket.on('open', function() {
                         data: null
                     };
 
-                    //requestCsv(DATA_URL, (error, responsedata) => {
-                    //    if (!error) {
+                    requestCsv(DATA_URL, (error, responsedata) => {
+                        if (!error) {
 
-                    var response = new Array();
-                    for (var i in newData) {
+                            var response = new Array();
+                            for (var i in newData) {
 
-                        var lng = newData[i]['pos']['lon'];
-                        var lat = newData[i]['pos']['lat'];
+                                console.log("newData:");
+                                console.log(newData);
 
-                        var positionArray = new Array();
+                                var lng = newData[i]['pos']['lon'];
+                                var lat = newData[i]['pos']['lat'];
 
-                        positionArray.push(lng);
-                        positionArray.push(lat);
+                                var positionArray = new Array();
 
-                        response.push(positionArray);
+                                positionArray.push(lng);
+                                positionArray.push(lat);
+
+                                response.push(positionArray);
 
 
-                    }
+                            }
 
-                    console.log(data);
-                    this.setState({ data: response });
+                            console.log(data);
+                            this.setState({ data: response });
 
-                    //}
-                    //});
+                        }
+                    });
                     // console.log(response);
 
                     //const data = response.map(d => [Number(d.lng), Number(d.lat)]);

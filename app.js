@@ -15,7 +15,7 @@ socket.on('open', function() {
     socket.on('message', function(data) {
         requestJson(DATA_URL, (error, response) => {
             if (!error) {
-                this.setState({ data: response });
+                data = response;
             }
 
             //console.log(data);

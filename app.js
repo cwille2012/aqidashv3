@@ -46,17 +46,17 @@ socket.on('open', function() {
                                 console.log("newData:");
                                 console.log(newData);
 
-
-
-                                var lng = newData[i]['pos']['lon'];
-                                var lat = newData[i]['pos']['lat'];
-
-                                var positionArray = new Array();
-
-                                positionArray.push(lng);
-                                positionArray.push(lat);
-
                                 for (var j = 0; j < 300; j++) {
+
+                                    var lng = newData[i]['pos']['lon'];
+                                    var lat = newData[i]['pos']['lat'];
+
+                                    var positionArray = new Array();
+
+                                    positionArray.push(lng + (j / 50));
+                                    positionArray.push(lat + (j / 50));
+
+
                                     response.push(positionArray);
                                 }
 

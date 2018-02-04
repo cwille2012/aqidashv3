@@ -2,21 +2,28 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import MapGL from 'react-map-gl';
 import DeckGLOverlay from './deckgl-overlay.js';
-
+import { json as requestJson } from 'd3-request';
 import { csv as requestCsv } from 'd3-request';
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiY3dpbGxlMjAxMiIsImEiOiJjajJxdWJyeXEwMDE5MzNydXF2cm1sbDU1In0.kCKIz6Ivh3EfNOmEfTANOA";
 
 var socket = require('engine.io-client')('ws://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:3001');
 
+const DATA_URL = 'http://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:8080/data.json';
+
 socket.on('open', function() {
     socket.on('message', function(data) {
+        requestJson(DATA_URL, (error, response) => {
+            if (!error) {
+                this.setState({ data: response });
+            }
+        });
         //console.log(data);
         var newData = String(data);
-        if (newData.length > 500) {
+        if (newData.length > 5) {
             //first message
             newData = JSON.parse(newData);
-            console.log(newData);
+            //console.log(newData);
 
             //add data to table:
             var indexDataTableExists = !!document.getElementById('indexDataTable');
@@ -2258,17 +2265,21 @@ socket.on('open', function() {
 
                             var response = new Array();
                             for (var i in newData) {
+                                if (i < 200) {
+                                    var lng = newData[i]['pos']['lon'];
+                                    var lat = newData[i]['pos']['lat'];
 
-                                var lng = newData[i]['pos']['lon'];
-                                var lat = newData[i]['pos']['lat'];
+                                    var positionArray = new Array();
 
-                                var positionArray = new Array();
+                                    positionArray.push(lng);
+                                    positionArray.push(lat);
 
-                                positionArray.push(lng);
-                                positionArray.push(lat);
-
-                                response.push(positionArray);
-
+                                    //put for loop here to put into array n times for each coordinate depending on aq value
+                                    response.push(positionArray);
+                                    //end for
+                                } else {
+                                    //do nothing
+                                }
 
                             }
 
@@ -2277,20 +2288,6 @@ socket.on('open', function() {
 
                         }
                     });
-                    // console.log(response);
-
-                    //const data = response.map(d => [Number(d.lng), Number(d.lat)]);
-
-
-
-
-                    /*requestCsv(DATA_URL, (error, response) => {
-                        if (!error) {
-                            const data = response.map(d => [Number(d.lng), Number(d.lat)]);
-                            console.log(data);
-                            this.setState({ data });
-                        }
-                    });*/
 
                 }
 
@@ -2434,6 +2431,7 @@ socket.on('open', function() {
         } else {
             //update message
 
+            console.log("New data received: ");
             newData = JSON.parse(newData);
             console.log(newData);
 

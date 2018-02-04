@@ -61,9 +61,9 @@ socket.on('open', function() {
 
                             }
 
-                            console.log(data);
-                            this.setState({ data: response });
 
+                            this.setState({ data: response });
+                            console.log(data);
                         }
                     });
                     // console.log(response);

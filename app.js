@@ -15,10 +15,11 @@ const DATA_URL = 'http://ec2-18-220-229-176.us-east-2.compute.amazonaws.com:8080
 requestJson(DATA_URL, (error, responsedata) => {
     if (!error) {
         //console.log(data);
-        var newData = String(responsedata);
-        if (newData.length > 500) {
+        //var newData = String(responsedata);
+        var newData = responsedata;
+        if (newData.length > 1) {
             //first message
-            newData = JSON.parse(newData);
+            //newData = JSON.parse(newData);
             console.log(newData);
 
             //add data to table:

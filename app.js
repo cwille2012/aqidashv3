@@ -2271,14 +2271,14 @@ requestJson(DATA_URL, (error, responsedata) => {
                                 positionArray.push(lng);
                                 positionArray.push(lat);
 
-                                response.push(positionArray);
-
+                                for (var j = 0; j < 60; j++) {
+                                    response.push(positionArray);
+                                }
 
                             }
 
-                            //console.log(data);
                             this.setState({ data: response });
-
+                            console.log(data);
                         }
                     });
                     // console.log(response);
@@ -2338,20 +2338,6 @@ requestJson(DATA_URL, (error, responsedata) => {
 
 
 
-
-
-
-
-
-
-
-
-
-        } else {
-            //update message
-
-            newData = JSON.parse(newData);
-            console.log(newData);
 
         }
 
